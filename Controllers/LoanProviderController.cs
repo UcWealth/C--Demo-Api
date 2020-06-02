@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using DemoApi.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DemoApi.Controllers
@@ -15,7 +16,7 @@ namespace DemoApi.Controllers
             return new OkObjectResult(_loanProviders);
         }
         [HttpPost("/loanproviders/addloanprovider")]
-        public IActionResult AddLoanProvider(CreateLoanProviderRequestModel model)
+        public IActionResult AddLoanProvider([FromBody]CreateLoanProviderRequestModel model)
         {
             _loanProviders.Add(model.Name);
             return CreatedAtAction(nameof(AddLoanProvider), null);
